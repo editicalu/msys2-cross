@@ -4,7 +4,7 @@ FROM debian:buster-slim
 # Get our base dependencies
 RUN set -ex && \
     apt-get update && \
-    apt-get install -y mingw-w64 mingw-w64-tools wget xz-utils gnupg2 && \
+    apt-get install -y wget xz-utils gnupg2 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
