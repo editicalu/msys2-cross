@@ -1,0 +1,17 @@
+tasks:
+  import:
+    type: docker/import
+    files: .:.
+  build:
+    type: docker/build
+    tag: msys2-cross:${HG_COMMIT_SHORT}
+    dockerfile: Dockerfile
+    files: .:.
+
+plans:
+  default:
+    stages:
+      - tasks:
+         - import
+         - build
+
