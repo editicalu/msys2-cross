@@ -16,11 +16,15 @@ COPY keyrings/ /usr/share/pacman/keyrings/
 # Install pacman-static
 RUN set -ex && \
     wget -O /usr/local/bin/pacman https://pkgbuild.com/~eschwartz/repo/x86_64-extracted/pacman-static && \
-    chmod +x /usr/local/bin/pacman && \
-    mkdir -p /windows/etc /windows/var/lib/pacman /windows/var/log /windows/tmp
+    chmod +x /usr/local/bin/pacman
 
 # setup pacman-key
 RUN set -ex && \
     pacman-key --init && \
     pacman-key --populate msys2
+
+# setup our cross root
+RUN set -ex && \
+    mkdir -p /windows/etc /windows/var/lib/pacman /windows/var/log /windows/tmp && \
+    pacman --root /windows -Syu
 
