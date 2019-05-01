@@ -1,12 +1,32 @@
+environment:
+  - REPO=rwgrim/msys2-cross
+  - TAG=latest
+  - REGISTRY_PASSWORD
+  - REGISTRY_SERVER=docker.io
+  - REGISTRY_USERNAME
+
 tasks:
   import:
     type: docker/import
     files: .:.
+
   build:
     type: docker/build
-    tag: rwgrim/msys2-cross:latest
+    tag: ${REPO}:${TAG}
     dockerfile: Dockerfile
     files: .:.
+
+  login:
+    type: docker/login
+    username: ${REGISTRY_USERNAME}
+    password: ${REGISTRY_PASSWORD}
+    server: ${REGISTRY_SERVER}
+  push:
+    type: docker/push
+    images: ${REPO}:${TAG}
+  logout:
+    type: docker/logout
+    server: ${REGISTRY_SERVER}
 
 plans:
   default:
@@ -14,4 +34,9 @@ plans:
       - tasks:
          - import
          - build
+  publish:
+    stages:
+      - tasks: [login, push]
+      - tasks: [logout]
+        run: always
 
