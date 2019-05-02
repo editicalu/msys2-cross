@@ -11,6 +11,7 @@ RUN set -ex && \
 COPY sync/ /var/lib/pacman/sync/
 COPY etc/ /etc/
 COPY bin/ /usr/local/bin/
+COPY share/ /usr/share/
 COPY keyrings/ /usr/share/pacman/keyrings/
 
 # Install pacman-static

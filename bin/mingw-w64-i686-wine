@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+WINEPATH=/windows/mingw32/bin wine $@
+
