@@ -4,7 +4,7 @@ FROM debian:buster-slim
 # Get our base dependencies
 RUN set -ex && \
     apt-get update && \
-    apt-get install -y wget xz-utils gnupg2 && \
+    apt-get install -y wget xz-utils gnupg2 bsdtar && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
@@ -26,5 +26,6 @@ RUN set -ex && \
 # setup our cross root
 RUN set -ex && \
     mkdir -p /windows/etc /windows/var/lib/pacman /windows/var/log /windows/tmp && \
-    pacman --root /windows -Syu
+    pacman-cross -Syu && \
+    pacman-cross -Syy --noconfirm msys/pacman
 
