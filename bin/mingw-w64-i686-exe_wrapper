@@ -1,4 +1,4 @@
 #!/bin/sh -e
 
-xvfb-run /usr/local/bin/mingw-w64-i686-wine $@
+xvfb-run -a /usr/local/bin/mingw-w64-i686-wine $@
 
