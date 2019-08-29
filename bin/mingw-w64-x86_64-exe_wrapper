@@ -1,4 +1,0 @@
-#!/bin/sh -e
-
-xvfb-run -a /usr/local/bin/mingw-w64-x86_64-wine $@
-
