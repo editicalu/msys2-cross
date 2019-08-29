@@ -1,5 +1,5 @@
 # vi:et:ts=4 sw=4 sts=4:ft=dockerfile
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 # manually usrmerge because pacman is expecting it
 RUN set -ex && \
@@ -27,7 +27,7 @@ RUN set -ex && \
 # Get our base dependencies
 RUN set -ex && \
     apt-get update && \
-    apt-get install -y wget xz-utils gnupg2 bsdtar && \
+    apt-get install -y wget xz-utils gnupg2 bsdtar file && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
