@@ -34,9 +34,9 @@ plans:
       - tasks:
          - import
          - build
-  publish:
+  ci:
     stages:
-      - tasks: [login, push]
+      - tasks: [import, build, login, push]
       - tasks: [logout]
         run: always
 
