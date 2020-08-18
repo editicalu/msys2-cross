@@ -12,6 +12,7 @@ RUN set -ex && \
     busybox ln -s /usr/sbin /sbin && \
     busybox mv /lib/x86_64-linux-gnu/* /usr/lib/x86_64-linux-gnu && \
     busybox rmdir /lib/x86_64-linux-gnu && \
+    busybox rm -rf /usr/lib/udev && \
     busybox mv /lib/* /usr/lib/ && \
     busybox rmdir /lib && \
     busybox ln -s /usr/lib/ /lib && \
