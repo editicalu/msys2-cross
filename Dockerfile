@@ -28,7 +28,7 @@ RUN set -ex && \
 # Get our base dependencies
 RUN set -ex && \
     apt-get update && \
-    apt-get install -y wget xz-utils gnupg2 libarchive-tools file && \
+    apt-get install -y wget xz-utils gnupg2 libarchive-tools file zstd && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
